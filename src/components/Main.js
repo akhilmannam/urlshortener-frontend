@@ -77,7 +77,7 @@ function Main() {
 								<th>Short URL</th>
 							</tr>
 						{
-							urlData.length > 0 && urlData.map((e, index) => (
+							urlData.map((e, index) => (
 								<tr key={index}>
 									<td>{e.longURL}</td>
 									<td><a href={`https://url-shortener-ak.herokuapp.com/${e.shortURL}+${index}`} target="_blank" rel="noopener noreferrer">{e.shortURL}</a></td>
