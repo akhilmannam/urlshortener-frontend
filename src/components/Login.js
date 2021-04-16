@@ -15,16 +15,16 @@ function Login() {
                 <form onSubmit={ async (e) => {
                     e.preventDefault();
                     const login = { email, password }
-                    let response = await axios.post('http://localhost:3001/login', login);
+                    let response = await axios.post('https://url-shortener-ak.herokuapp.com/login', login);
                     window.localStorage.setItem('login_token', response.data.token);
-                    //console.log(response.data);
+
                     setMessage(response.data.message);
-                        if(response.data.message === 'Allow'){
-                            history.push(`/shortener/${response.data.id}`);
-                        }
-                        else{
-                            history.push('/login');
-                        }
+                    if(response.data.message === 'Allow'){
+                        history.push(`/shortener/${response.data.id}`);
+                    }
+                    else{
+                        history.push('/login');
+                    }
                     setEmail('');
                     setPassword('');
                 }

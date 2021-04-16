@@ -13,7 +13,7 @@ function Registration() {
 		e.preventDefault();
 		const registration = { email, password }
 		async function postRegistrationData(){
-			let response = await axios.post('http://localhost:3001/register', registration)
+			let response = await axios.post('https://url-shortener-ak.herokuapp.com/register', registration)
             console.log(response.data);
 		}
 		postRegistrationData();		

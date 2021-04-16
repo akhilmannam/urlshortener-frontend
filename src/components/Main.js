@@ -14,7 +14,7 @@ function Main() {
 
     useEffect(() => {
 		async function fetchData(){
-			let response = await axios.get(`http://localhost:3001/urls/${params.id}`, {
+			let response = await axios.get(`https://url-shortener-ak.herokuapp.com/urls/${params.id}`, {
 				headers : {
 					Accept: 'application/json',
 					Authorization : window.localStorage.getItem('login_token')
@@ -39,7 +39,7 @@ function Main() {
 		if(errorMessage === 'Valid'){
 			const url = { longURL }
 			async function postURL(){
-				await axios.post(`http://localhost:3001/urls/${params.id}`, url, {
+				await axios.post(`https://url-shortener-ak.herokuapp.com/urls/${params.id}`, url, {
 					headers : {
 						Accept: 'application/json',
 						Authorization : window.localStorage.getItem('login_token')
@@ -80,7 +80,7 @@ function Main() {
 							urlData.length > 0 && urlData.map((e, index) => (
 								<tr key={index}>
 									<td>{e.longURL}</td>
-									<td><a href={`http://localhost:3001/${e.shortURL}+${index}`} target="_blank" rel="noopener noreferrer">{e.shortURL}</a></td>
+									<td><a href={`https://url-shortener-ak.herokuapp.com/${e.shortURL}+${index}`} target="_blank" rel="noopener noreferrer">{e.shortURL}</a></td>
 								</tr>
 							))
 						}
