@@ -11,10 +11,9 @@ function Registration() {
 
     const handleSubmit = (e) => {
 		e.preventDefault();
-		const registration = { email, password }
+		const registration = { email, password, links : [] }
 		async function postRegistrationData(){
-			let response = await axios.post('https://url-shortener-ak.herokuapp.com/register', registration)
-            console.log(response.data);
+			await axios.post('https://url-shortener-ak.herokuapp.com/register', registration)
 		}
 		postRegistrationData();		
 		setEmail('');
