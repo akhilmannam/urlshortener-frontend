@@ -1,67 +1,77 @@
-table, th, td{
-    border: 1px solid black;
-    border-collapse: collapse;
+table,
+th,
+td {
+	border: 1px solid black;
+	border-collapse: collapse;
 }
 
-th, td{
-    padding: 15px;
+th,
+td {
+	padding: 15px;
 }
 
-button{
-    background-color: palevioletred;
-    margin: 5px;
-    padding: 10px;
+button {
+	background-color: palevioletred;
+	margin: 5px;
+	padding: 10px;
 }
 
-button:hover{
-    cursor: pointer;
+button:hover {
+	cursor: pointer;
 }
 
-button:focus{
-    outline: 0 !important;
+button:focus {
+	outline: 0 !important;
 }
 
-.shorten, .registration, .login, .dashboard{
-    display: grid;
-    place-items: center;
-    min-height: 80vh;
-    min-width: 60vw;
+.shorten,
+.registration,
+.login,
+.dashboard {
+	display: grid;
+	place-items: center;
+	min-height: 80vh;
+	min-width: 60vw;
 }
 
-.shorten_container, .registration_container, .login_container, .dashboard_container{
-    padding: 10px;
+.shorten_container,
+.registration_container,
+.login_container,
+.dashboard_container {
+	padding: 10px;
 }
 
-
-input{
-    margin: 5px;
-    padding: 10px;
-    width: calc(100% - 65px);
+input {
+	margin: 5px;
+	padding: 10px;
+	width: calc(100% - 65px);
 }
 
-h4{
-    text-align: center;
+h4 {
+	text-align: center;
 }
 
-label{
-    margin: 5px;
+label {
+	margin: 5px;
 }
 
-.header{
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    min-height: 10vh;
-    background-color: black;
-    color: #fff;
+.header {
+	display: flex;
+	justify-content: center;
+	align-self: center;
+	min-height: 10vh;
+	background-color: black;
+	color: #fff;
 }
 
-h2{
-    padding: 5px;
+h2 {
+	padding: 5px;
 }
 
-.urls{
-    border: 1px solid black;
-    margin: 5px;
-    padding: 5px;
+.urls {
+	border: 5px solid white;
+	margin: 0.5rem 0;
+	padding: 1rem;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
+import Alert from "@material-ui/lab/Alert";
 import "../App.css";
 
 function Login() {
@@ -8,6 +9,7 @@ function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [message, setMessage] = useState("");
+	const [logged, setLogged] = useState(false);
 
 	return (
 		<div className="login">
@@ -33,6 +35,7 @@ function Login() {
 						}
 						setEmail("");
 						setPassword("");
+						setLogged(true);
 					}}
 				>
 					<label htmlFor="email">Email</label>
@@ -55,7 +58,12 @@ function Login() {
 					/>
 					<button type="submit">Login</button>
 					<br />
-					<span>{message}</span>
+					<Alert
+						style={{ display: `${logged ? "flex" : "none"}` }}
+						severity="error"
+					>
+						{message}
+					</Alert>
 				</form>
 				<h5>Don't have an account?</h5>
 				<button

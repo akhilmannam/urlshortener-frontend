@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../App.css";
 import validator from "validator";
-import { useHistory, useParams } from "react-router";
+import { useHistory, useParams } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+import Alert from "@material-ui/lab/Alert";
+import "../App.css";
 
 function Main() {
 	const history = useHistory();
@@ -11,6 +12,9 @@ function Main() {
 	const [longURL, setlongURL] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const [urldata, seturlData] = useState([]);
+	const [message, setMessage] = useState("");
+	const [shortened, setShortened] = useState(false);
+	const [status, setStatus] = useState(false);
 
 	const validate = (value) => {
 		if (validator.isURL(value)) {
@@ -27,9 +31,8 @@ function Main() {
 				{
 					headers: {
 						Accept: "application/json",
-						Authorization: window.localStorage.getItem(
-							"login_token"
-						),
+						Authorization:
+							window.localStorage.getItem("login_token"),
 					},
 				}
 			);
@@ -44,21 +47,28 @@ function Main() {
 		if (errorMessage === "Valid") {
 			const url = { longURL };
 			async function postURL() {
-				await axios.post(
+				let response = await axios.post(
 					`https://url-shortener-ak.herokuapp.com/urls/${params.id}`,
 					url,
 					{
 						headers: {
 							Accept: "application/json",
-							Authorization: window.localStorage.getItem(
-								"login_token"
-							),
+							Authorization:
+								window.localStorage.getItem("login_token"),
 						},
 					}
 				);
+				if (response.data.status === "success") {
+					setMessage(response.data.message);
+					setStatus(response.data.status);
+				} else {
+					setMessage(response.data.message);
+					setStatus(response.data.status);
+				}
 			}
 			postURL();
 			setlongURL("");
+			setShortened(true);
 		} else {
 			alert("Please enter valid URL");
 		}
@@ -98,6 +108,12 @@ function Main() {
 						<button type="submit">Shorten URL</button>
 						<span>{errorMessage}</span>
 					</form>
+					<Alert
+						style={{ display: `${shortened ? "flex" : "none"}` }}
+						severity={status ? "success" : "warning"}
+					>
+						{message}
+					</Alert>
 					{urldata.map((item, index) => (
 						<div className="urls" key={index}>
 							<h6>Long URL : {item.longURL} </h6>
