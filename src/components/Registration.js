@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Alert from "@material-ui/lab/Alert";
 import "../App.css";
+import { Button, TextField } from "@material-ui/core";
 
 function Registration() {
 	const history = useHistory();
@@ -38,25 +39,28 @@ function Registration() {
 		<div className="registration">
 			<div className="registration_container">
 				<form onSubmit={handleSubmit}>
-					<label htmlFor="email">Email</label>
-					<input
-						id="email"
-						required
+					<TextField
+						type="email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						placeholder="Enter your email"
-						type="email"
+						id="outlined-basic"
+						label="Email"
+						variant="filled"
 					/>
-					<label htmlFor="password">Password</label>
-					<input
-						id="password"
-						required
+					<br />
+					<TextField
+						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						placeholder="Enter your password"
-						type="password"
+						id="outlined-basic"
+						label="Password"
+						variant="filled"
 					/>
-					<button>Sign Up</button>
+					<br />
+
+					<Button variant="contained" color="secondary" type="submit">
+						Sign Up
+					</Button>
 				</form>
 				<Alert
 					style={{ display: `${signed ? "flex" : "none"}` }}
@@ -65,13 +69,15 @@ function Registration() {
 					{message}
 				</Alert>
 				<h5>Already have an account?</h5>
-				<button
+				<Button
+					variant="contained"
+					color="secondary"
 					onClick={() => {
 						history.push("/login");
 					}}
 				>
 					Login
-				</button>
+				</Button>
 			</div>
 		</div>
 	);

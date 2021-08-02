@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import Alert from "@material-ui/lab/Alert";
 import "../App.css";
+import { Button, TextField } from "@material-ui/core";
 
 function Main() {
 	const history = useHistory();
@@ -83,19 +84,23 @@ function Main() {
 		<>
 			<div className="shorten">
 				<div className="shorten_container">
-					<button
+					<Button
+						id="logout"
+						variant="contained"
+						color="secondary"
 						onClick={() => {
 							handleLogout();
 						}}
 					>
 						Logout
-					</button>
+					</Button>
 					<form
+						id="shortener"
 						onSubmit={(e) => {
 							handleSubmit(e);
 						}}
 					>
-						<input
+						<TextField
 							required
 							type="text"
 							onChange={(e) => {
@@ -104,13 +109,20 @@ function Main() {
 							}}
 							value={longURL}
 							placeholder="Paste URL here"
-						/>
-						<button type="submit">Shorten URL</button>
+						/>{" "}
+						<br />
+						<Button
+							variant="contained"
+							color="secondary"
+							type="submit"
+						>
+							Shorten URL
+						</Button>
 						<span>{errorMessage}</span>
 					</form>
 					<Alert
 						style={{ display: `${shortened ? "flex" : "none"}` }}
-						severity={status ? "success" : "warning"}
+						severity={status ? "success" : "error"}
 					>
 						{message}
 					</Alert>

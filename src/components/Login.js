@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import Alert from "@material-ui/lab/Alert";
 import "../App.css";
+import { Button, TextField } from "@material-ui/core";
 
 function Login() {
 	const history = useHistory();
@@ -38,25 +39,27 @@ function Login() {
 						setLogged(true);
 					}}
 				>
-					<label htmlFor="email">Email</label>
-					<input
-						required
+					<TextField
+						type="email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						placeholder="Enter your email"
-						type="email"
-						id="email"
+						id="outlined-basic"
+						label="Email"
+						variant="filled"
 					/>
-					<label htmlFor="password">Password</label>
-					<input
-						required
+					<br />
+					<TextField
+						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						placeholder="Enter your password"
-						type="password"
-						id="password"
+						id="outlined-basic"
+						label="Password"
+						variant="filled"
 					/>
-					<button type="submit">Login</button>
+					<br />
+					<Button variant="contained" color="secondary" type="submit">
+						Login
+					</Button>
 					<br />
 					<Alert
 						style={{ display: `${logged ? "flex" : "none"}` }}
@@ -66,13 +69,15 @@ function Login() {
 					</Alert>
 				</form>
 				<h5>Don't have an account?</h5>
-				<button
+				<Button
+					variant="contained"
+					color="secondary"
 					onClick={() => {
 						history.push("/");
 					}}
 				>
 					Sign Up
-				</button>
+				</Button>
 			</div>
 		</div>
 	);
